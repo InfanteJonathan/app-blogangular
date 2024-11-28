@@ -1,0 +1,79 @@
+<main class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        @if(token){
+          <div>
+            <li class="btn btn-primary" (click)="navigateCreate()">Nuevo Post</li>
+          </div>
+        }
+        <h2>Publicaciones mas Visitadas</h2>
+
+        <div style="display: flex; width: 100%;justify-content: center;">
+          <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              @for (item of postList; track $index) {
+              <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                <img src="{{ item.imageUrl }}" class="d-block w-100 imagenes" />
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{{ item.title }}</h5>
+                </div>
+              </div>
+              }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+        <br />
+        <div class="">
+          <div class="container mt-5">
+            <h3>Publicaciones Recientes</h3>
+            <div class="container-flex" >
+              @for (item of postList; track $index) {
+              <div class="item">
+                <div style="display: flex">
+                  <div>
+                    <img style="height: 130px; width: 160px; padding: 10px" src="{{ item.imageUrl }}" alt="" />
+                  </div>
+                  <div>
+                    <h3 style="cursor: pointer;" (click)="viewPost(item.idPosts)" >{{ item.title }}</h3>
+                    <!-- <p>{{ item.content }}</p> -->
+                    <p>{{ item.fechaRegistro?.toLocaleDateString() }}</p>
+                  </div>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" style="padding: 20px">
+          <div class="sidebar">
+            <h4>Curiosidades Semanales</h4>
+            <p>
+              Si quieres entrar al mundo de la programación y quieres
+              aprender a hacerlo, es buscar un buen guia o mentor, trazar
+              una ruta y aprender unas bases solidas, por que la programacion
+              se aprender programando!.
+            </p>
+            <h4>Publicaciones Poppulares</h4>
+            <ul class="list-unstyled">
+              <li><a href="#">Understanding CSS Grid</a></li>
+              <li><a href="#">JavaScript ES6 Features</a></li>
+              <li><a href="#">How to Use Flexbox</a></li>
+            </ul>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</main>

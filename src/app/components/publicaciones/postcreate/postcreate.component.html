@@ -1,0 +1,18 @@
+<h1>Crear Post</h1>
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="title">Título</label>
+    <input type="text" id="title" formControlName="title" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label for="content">Contenido</label>
+    <editor
+      apiKey="0q1i5zsedph3x4fi70wdqqd7ngdygis8pc5e2it4mti0bosp" 
+      [init]="{ 
+        plugins: 'link table', toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code' }"
+      formControlName="content"
+      id="content">
+    </editor>
+  </div>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
